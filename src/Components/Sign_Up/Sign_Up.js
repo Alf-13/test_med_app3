@@ -34,15 +34,14 @@ const SignUp = () => {
             sessionStorage.setItem("email", email);
             navigate("/");
             window.location.reload(); // Refresh the page
-        } else {
-            if (json.errors) {
-                for (const error of json.errors) {
-                    setShowerr(error.msg); // Show error messages
-                }
-            } else {
-                setShowerr(json.error);
-            }
-        }
+        } else { 
+            if (json.errors) { 
+                const errorMessages = json.errors.map(error => error.msg).join(', '); 
+                setShowerr(errorMessages); 
+            } else { 
+                setShowerr(json.error); 
+            } 
+        } 
     };
 
     return (
