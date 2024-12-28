@@ -43,7 +43,7 @@ const Navbar = () => {
 
       if (storedemail) {
             setIsLoggedIn(true);
-            setUsername(storedemail);
+            setUsername(storedemail.substring(0, storedemail.indexOf('@')));
           }
         }, []);
   return (
@@ -71,7 +71,8 @@ const Navbar = () => {
         </li>
         {isLoggedIn?(
           <>
-            <li className="link">
+          Welcome, {username}
+            <li className="link">  
               <button className="btn2" onClick={handleLogout}>
                 Logout
               </button>
