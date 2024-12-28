@@ -1,7 +1,7 @@
 import DoctorCard from "./DoctorCard/DoctorCard";
 import FindDoctorSearch from "./FindDoctorSearch/FindDoctorSearch";
 
-const BookingConsulation = () => {
+const BookingConsultation = () => {
     return(
         <>
         <FindDoctorSearch/>
@@ -10,4 +10,4 @@ const BookingConsulation = () => {
     );
 }
 
-export default BookingConsulation;
+export default BookingConsultation;

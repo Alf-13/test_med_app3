@@ -1,0 +1,32 @@
+/* Current CSS */
+.appointment-card {
+    background-color: #2196f3;
+}
+
+.appointment-card__title {
+    color: #fff;
+}
+
+.appointment-card__message {
+    color: #fff;
+}
+
+/* New CSS for Centered Notification */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2196f3;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 16px;
+    text-align: center; /* Center the text */
+}
+
+.notification p {
+    margin: 0;
+}
