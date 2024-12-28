@@ -7,6 +7,7 @@ import Login from './Components/Login/Login';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
 import AppointmentForm from './Components/AppointmentForm/AppointmentForm';
 import BookingConsultation from './Components/BookingConsultation';
+import ReviewForm from './Components/ReviewForm/ReviewForm';
 import { NotificationProvider } from './NotificationContext';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/instant-consultation" element={<InstantConsultation />} />
                         <Route path="/appointment-form" element={<AppointmentForm onSubmit={handleFormSubmit} />} />
                         <Route path="/booking-consultation" element={<BookingConsultation />} />
+                        <Route path="/reviews" element={<ReviewForm />} />
                     </Routes>
                 </NotificationProvider>
             </BrowserRouter>
