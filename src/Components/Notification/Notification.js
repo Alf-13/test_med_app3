@@ -1,57 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar/Navbar';
+import React, { useContext } from 'react';
+import { NotificationContext } from '../../NotificationContext';
 import './Notification.css';
 
-const Notification = ({ message, name, phoneNumber, dateOfAppointment, selectedSlot }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [doctorData, setDoctorData] = useState(null);
-  const [appointmentData, setAppointmentData] = useState(null);
+const Notification = () => {
+    const { notification } = useContext(NotificationContext);
 
-  useEffect(() => {
-    const storedUsername = sessionStorage.getItem('email');
-    const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
+    if (!notification) return null;
 
-    if (storedUsername) {
-      setIsLoggedIn(true);
-      setUsername(storedUsername);
-    }
-
-    if (storedDoctorData) {
-      setDoctorData(storedDoctorData);
-    }
-
-    if (storedAppointmentData) {
-      setAppointmentData(storedAppointmentData);
-    }
-  }, []);
-
-  return (
-    <div>
-      <Navbar />
-      {message && (
+    return (
         <div className="notification">
-          <h3>Appointment Details:</h3>
-          <p><strong>Name:</strong> {name}</p>
-          <p><strong>Phone Number:</strong> {phoneNumber}</p>
-          <p><strong>Date of Appointment:</strong> {dateOfAppointment}</p>
-          <p><strong>Time Slot:</strong> {selectedSlot}</p>
-          <p>{message}</p>
+            <h3>Appointment Details:</h3>
+            <p><strong>Name:</strong> {notification.details.name}</p>
+            <p><strong>Phone Number:</strong> {notification.details.phoneNumber}</p>
+            <p><strong>Date of Appointment:</strong> {notification.details.dateOfAppointment}</p>
+            <p><strong>Time Slot:</strong> {notification.details.selectedSlot}</p>
+            <p>{notification.message}</p>
         </div>
-      )}
-      {isLoggedIn && appointmentData && (
-        <div className="appointment-card">
-          <div className="appointment-card__content">
-            <h3 className="appointment-card__title">Appointment Details</h3>
-            <p className="appointment-card__message">
-              <strong>Doctor:</strong> {doctorData?.name}
-            </p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default Notification;

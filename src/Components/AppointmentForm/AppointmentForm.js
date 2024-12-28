@@ -1,36 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../DoctorCard/DoctorCard.css';
 import Notification from '../Notification/Notification';
+import { NotificationContext } from '../../NotificationContext';
 
 const AppointmentForm = ({ onSubmit }) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedSlot, setSelectedSlot] = useState('');
     const [dateOfAppointment, setDateOfAppointment] = useState('');
-    const [showNotification, setShowNotification] = useState(false);
+    const { showNotification, hideNotification } = useContext(NotificationContext);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ name, phoneNumber, dateOfAppointment, selectedSlot });
+        const appointmentDetails = { name, phoneNumber, dateOfAppointment, selectedSlot };
+        onSubmit(appointmentDetails);
         console.log('Form submitted');
-        setShowNotification(true);
-        setTimeout(() => {
-            setShowNotification(false);
-            console.log('Notification hidden');
-        }, 5000); // Hide notification after 5 seconds
+        showNotification("Appointment booked successfully!", appointmentDetails);
+        setTimeout(hideNotification, 5000); // Hide notification after 5 seconds
     };
 
     return (
         <>
-            {showNotification && 
-                <Notification 
-                    message="Appointment booked successfully!" 
-                    name={name} 
-                    phoneNumber={phoneNumber} 
-                    dateOfAppointment={dateOfAppointment} 
-                    selectedSlot={selectedSlot} 
-                />
-            }
+            <Notification />
             <form onSubmit={handleFormSubmit} className="appointment-form">
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
