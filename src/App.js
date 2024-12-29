@@ -5,11 +5,11 @@ import LandingPage from './Components/Landing_Page/Landing_Page';
 import SignUp from './Components/Sign_Up/Sign_Up';
 import Login from './Components/Login/Login';
 import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
-import AppointmentForm from './Components/AppointmentForm/AppointmentForm';
+import AppointmentFormWrapper from './Components/AppointmentForm/AppointmentFormWrapper'; // Ensure the path is correct
 import BookingConsultation from './Components/BookingConsultation';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
 import ProfileForm from './Components/ProfileForm/ProfileForm';
-import ReportsLayout from './Components/ReportsLayout/ReportsLayout'; // Import ReportsLayout
+import ReportsLayout from './Components/ReportsLayout/ReportsLayout';
 import { NotificationProvider } from './NotificationContext';
 
 function App() {
@@ -23,11 +23,11 @@ function App() {
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/instant-consultation" element={<InstantConsultation />} />
-                        <Route path="/appointment-form" element={<AppointmentForm />} />
+                        <Route path="/appointment-form" element={<AppointmentFormWrapper />} /> {/* Using the wrapper */}
                         <Route path="/booking-consultation" element={<BookingConsultation />} />
                         <Route path="/reviews" element={<ReviewForm />} />
                         <Route path="/profile" element={<ProfileForm />} />
-                        <Route path="/reports" element={<ReportsLayout />} /> {/* Add route for ReportsLayout */}
+                        <Route path="/reports" element={<ReportsLayout />} />
                     </Routes>
                 </NotificationProvider>
             </BrowserRouter>
