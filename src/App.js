@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/Landing_Page/Landing_Page';
 import SignUp from './Components/Sign_Up/Sign_Up';
@@ -8,6 +8,7 @@ import InstantConsultation from './Components/InstantConsultationBooking/Instant
 import AppointmentForm from './Components/AppointmentForm/AppointmentForm';
 import BookingConsultation from './Components/BookingConsultation';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
+import ProfileCard from './Components/ProfileCard/ProfileCard';
 import { NotificationProvider } from './NotificationContext';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/appointment-form" element={<AppointmentForm onSubmit={handleFormSubmit} />} />
                         <Route path="/booking-consultation" element={<BookingConsultation />} />
                         <Route path="/reviews" element={<ReviewForm />} />
+                        <Route path="/profile" element={<ProfileCard />} />
                     </Routes>
                 </NotificationProvider>
             </BrowserRouter>
