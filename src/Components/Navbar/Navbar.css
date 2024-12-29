@@ -11,6 +11,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    z-index: 1000; /* Ensure a high z-index */
 }
 
 .nav__logo {
@@ -56,7 +57,7 @@ nav {
     top: 100%;
     left: 0;
     z-index: 1;
-    display: none;
+    display: block;
     min-width: 200px;
     padding: 8px 0;
     background-color: #fff;
@@ -79,6 +80,9 @@ nav {
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
+    position: relative; /* Make sure the position is relative */
+    z-index: 2; /* Ensure this z-index is above the dropdown */
+    width: 100%; /* Ensures the link spans the full width for easy clicking */
 }
 
 .dropdown-link:hover {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import ProfileCard from '../ProfileCard/ProfileCard';
 
@@ -8,7 +8,9 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const [showDropdown, setShowDropdown] = useState(false);
-    
+    const dropdownRef = useRef(null);
+    const navigate = useNavigate();
+
     const handleClick = () => setClick(!click);
 
     const handleLogout = () => {
@@ -20,19 +22,37 @@ const Navbar = () => {
         setIsLoggedIn(false);
         setUsername('');
         window.location.reload();
-    }
-    
-    const handleDropdown = () => {
+    };
+
+    const handleDropdown = (event) => {
+        event.stopPropagation();
         setShowDropdown(!showDropdown);
-    }
-    
-    useEffect(() => { 
+    };
+
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setShowDropdown(false);
+        }
+    };
+
+    useEffect(() => {
         const storedEmail = sessionStorage.getItem("email");
         if (storedEmail) {
             setIsLoggedIn(true);
             setUsername(storedEmail.substring(0, storedEmail.indexOf('@')));
         }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
     }, []);
+
+    const handleProfileClick = (event) => {
+        event.preventDefault();
+        setShowDropdown(false);
+        navigate("/profile");
+    };
 
     return (
         <nav>
@@ -61,16 +81,14 @@ const Navbar = () => {
                 </li>
                 {isLoggedIn ? (
                     <>
-                        <li className="link welcome-user" onClick={handleDropdown}>
+                        <li className="link welcome-user" onClick={handleDropdown} ref={dropdownRef}>
                             Welcome, {username}
-                            <div className="dropdown-menu">
-                                {showDropdown && (
-                                    <>
-                                        <ProfileCard />
-                                        <Link to="/profile" className="dropdown-item">Edit Profile</Link>
-                                    </>
-                                )}
-                            </div>
+                            {showDropdown && (
+                                <div className="dropdown-menu">
+                                    <ProfileCard />
+                                    <Link to="/profile" className="dropdown-link" onClick={handleProfileClick}>Edit Profile</Link>
+                                </div>
+                            )}
                         </li>
                         <li className="link">
                             <button className="btn2" onClick={handleLogout}>

@@ -8,15 +8,10 @@ import InstantConsultation from './Components/InstantConsultationBooking/Instant
 import AppointmentForm from './Components/AppointmentForm/AppointmentForm';
 import BookingConsultation from './Components/BookingConsultation';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
-import ProfileCard from './Components/ProfileCard/ProfileCard';
+import ProfileForm from './Components/ProfileForm/ProfileForm';
 import { NotificationProvider } from './NotificationContext';
 
 function App() {
-    const handleFormSubmit = (formData) => {
-        console.log('Form submitted with data:', formData);
-        // Handle form submission (e.g., send data to an API, update state, etc.)
-    };
-
     return (
         <div className="App">
             <BrowserRouter>
@@ -27,10 +22,10 @@ function App() {
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/instant-consultation" element={<InstantConsultation />} />
-                        <Route path="/appointment-form" element={<AppointmentForm onSubmit={handleFormSubmit} />} />
+                        <Route path="/appointment-form" element={<AppointmentForm />} />
                         <Route path="/booking-consultation" element={<BookingConsultation />} />
                         <Route path="/reviews" element={<ReviewForm />} />
-                        <Route path="/profile" element={<ProfileCard />} />
+                        <Route path="/profile" element={<ProfileForm />} />
                     </Routes>
                 </NotificationProvider>
             </BrowserRouter>
