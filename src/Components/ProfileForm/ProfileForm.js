@@ -7,7 +7,7 @@ const ProfileForm = () => {
     const [userDetails, setUserDetails] = useState({});
     const [updatedDetails, setUpdatedDetails] = useState({});
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         const authtoken = sessionStorage.getItem("auth-token");
         if (!authtoken) {
@@ -102,22 +102,22 @@ const ProfileForm = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={updatedDetails.email || ''}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="form-group">
                     <label htmlFor="phone">Phone</label>
                     <input
                         type="text"
                         id="phone"
                         name="phone"
                         value={updatedDetails.phone || ''}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={updatedDetails.email || ''}
                         onChange={handleInputChange}
                     />
                 </div>

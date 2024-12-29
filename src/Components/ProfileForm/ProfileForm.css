@@ -1,28 +1,24 @@
-.profile-page-container {
+.profile-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    padding-top: 150px; /* Adjust this value to shift the entire content lower */
+    padding: 20px;
+    margin-top: 5rem; /* Adjust this value to add space at the top */
 }
 
-.profile-card-container {
-    margin-top: 50px; /* Adjust this value to shift the profile card lower */
+.profile-form-container h2 {
+    margin-bottom: 20px;
 }
 
-.profile-details {
-    margin-top: 20px;
-}
-
-form {
+.form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    margin-bottom: 15px;
 }
 
 label {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 input {

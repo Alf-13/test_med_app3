@@ -54,6 +54,12 @@ const Navbar = () => {
         navigate("/profile");
     };
 
+    const handleReportsClick = (event) => {
+        event.preventDefault();
+        setShowDropdown(false);
+        navigate("/reports");
+    };
+
     return (
         <nav>
             <div className="nav__logo">
@@ -87,6 +93,7 @@ const Navbar = () => {
                                 <div className="dropdown-menu">
                                     <ProfileCard />
                                     <Link to="/profile" className="dropdown-link" onClick={handleProfileClick}>Edit Profile</Link>
+                                    <Link to="/reports" className="dropdown-link" onClick={handleReportsClick}>Reports</Link>
                                 </div>
                             )}
                         </li>
